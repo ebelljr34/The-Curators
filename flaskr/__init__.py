@@ -6,34 +6,17 @@ from flask import redirect, render_template, url_for
 # import openpyxl module
 import openpyxl
 
-# Give the location of the file
-path = "TKH Student Projects.xlsx"
-wb_obj = openpyxl.load_workbook(path)
-sheet_obj = wb_obj.active
-cell_obj = sheet_obj.cell(row = 1, column = 1)
-max_col_num = sheet_obj.max_column
-max_row_num = sheet_obj.max_row
-
-class EndpointFunction:
-    def __init__(self):
-        self.function_name = None
-
-    def _Handler(self, **kwargs):
-        print('Calling function {} with parameters {}'.format(self.function_name, kwargs))
-        self.function_name = None
-
-    def __getattr__(self, attr):
-        self.function_name = attr
-        return self._Handler
-
-def rename(newname):
-    def decorator(f):
-        f.__name__ = newname
-        return f
-    return decorator
-
 
 def create_app(test_config=None):
+    # Give the location of the file
+    path = "TKH Student Projects.xlsx"
+    wb_obj = openpyxl.load_workbook(path)
+    sheet_obj = wb_obj.active
+    cell_obj = sheet_obj.cell(row = 1, column = 1)
+    max_col_num = sheet_obj.max_column
+    max_row_num = sheet_obj.max_row
+
+
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
@@ -55,7 +38,7 @@ def create_app(test_config=None):
         pass
 
     track_keyword_web = {}
-    # read project urls from TKH Student Projects.xlsx
+    # read project urls from "TKH Student Projects.xlsx"
     for r in range(2, max_row_num):
         track = sheet_obj.cell(row = r, column = 2).value
         student_first_name = sheet_obj.cell(row = r, column = 1).value.split(" ")[0]
