@@ -1,6 +1,36 @@
-.App {
+body {
   text-align: center;
+  background-color: black;
 }
+
+.Ticket {
+  width: 50%;
+  /* this takes it out of position hirearchy */
+  position: absolute;
+  /* places image behind */
+  z-index: -1;
+  right: 25%;
+  top: 20%;
+}
+
+.Home-text {
+  color: white;
+  position: absolute;
+  top: 20%;
+  right: 50%;
+
+} 
+
+.Gallery {
+  background-color: black;
+  display: flex; 
+}
+
+.Gallery-title {
+  color: gray;
+}
+
+
 
 .App-logo {
   height: 40vmin;

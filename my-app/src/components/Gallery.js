@@ -6,7 +6,7 @@ import Carousel from "./Carousel"
 function Gallery() {
   
   return (
-    <div className="Gallery">
+    <div className="Gallery-component">
       <Carousel projects ={projects}/>
     </div>
   );
