@@ -1,0 +1,16 @@
+/* See the Examples section of https://css-tricks.com/snippets/css/a-guide-to-flexbox/ 
+*/
+
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    padding: 10;
+    margin: 5;
+    list-style: none;
+}
+
+.flex-item {
+    padding: 10px;
+    background-color: yellow;
+}
