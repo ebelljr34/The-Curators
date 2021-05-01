@@ -16,6 +16,12 @@ def create_app(test_config=None):
     max_col_num = sheet_obj.max_column
     max_row_num = sheet_obj.max_row
 
+    # col_content = {1: "Student Name", 2:"Track", 3:"Project Title", 4:"Link to Project", 5:"Description of Project", 6: "Github Link", 7: "Photo Link"}
+    col_content = {}
+    for c in range(1, max_col_num):
+        col_content[c] = sheet_obj.cell(row = 1, column = c).value
+    
+
 
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
@@ -37,23 +43,43 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    track_keyword_web = {}
+    track_info = {}
+    track_keyword_website = {}
     # read project urls from "TKH Student Projects.xlsx"
     for r in range(2, max_row_num):
         track = sheet_obj.cell(row = r, column = 2).value
         student_first_name = sheet_obj.cell(row = r, column = 1).value.split(" ")[0]
         keyword = sheet_obj.cell(row = r, column = 3).value.split(" ")[0] if " " in sheet_obj.cell(row = r, column = 3).value else sheet_obj.cell(row = r, column = 3).value
-        track_keyword_name = track + "_" + keyword + "_" + student_first_name
+        keyword_name = keyword + "_" + student_first_name
         website = sheet_obj.cell(row = r, column = 4).value
-        track_keyword_web[track_keyword_name] = website
-    print(track_keyword_web)
+        if track not in track_keyword_website:
+            track_keyword_website[track] = {}
+        track_keyword_website[track].update({keyword_name:website})
 
-    #http://127.0.0.1:5000/projects/WD_Bloom_Quiana
-    #http://127.0.0.1:5000/projects/D_Treasury_Gyasi
-    #http://127.0.0.1:5000/projects/D_Food_Jessica
+        if track not in track_info:
+            track_info[track] = []
+        project_info = {}
+        for c in range(1, max_col_num):
+            column_name = col_content[c]
+            project_info.update({column_name: sheet_obj.cell(row = r, column = c).value}) 
+        track_info[track].append(project_info)
+        
+        
+    print (track_info)
 
-    @app.route('/projects/<track_keyword_name>')
-    def endpoint(track_keyword_name):
-        return redirect(track_keyword_web[track_keyword_name])
+    #track_keyword_studentname
+    #http://127.0.0.1:5000/projects/WD/Bloom_Quiana
+    #http://127.0.0.1:5000/projects/D/Treasury_Gyasi
+    #http://127.0.0.1:5000/projects/D/Food_Jessica
+
+    @app.route('/projects/<track>/<keyword_name>')
+    def endpoint_detail(track, keyword_name):
+        return redirect(track_keyword_website[track][keyword_name])
+
+    #http://127.0.0.1:5000/projects/WD
+    #http://127.0.0.1:5000/projects/D
+    @app.route('/projects/<track>')
+    def endpoint_track(track):
+        return track_info[track]
 
     return app
