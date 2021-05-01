@@ -6,7 +6,7 @@ class Project extends Component {
 
         this.state = {
             title: "",
-            name: "",
+            author: "",
             link: "",
             image: "",
             description: ""
@@ -16,9 +16,9 @@ class Project extends Component {
     componentDidMount() {
         this.setState({
             title: this.props.title,
-            name: this.props.name,
+            author: this.props.author,
             link: this.props.link,
-            image: this.props.image, 
+            image: this.props.image,
             description: this.props.description
         })
     }
@@ -27,7 +27,7 @@ class Project extends Component {
         return (
             <div>
                 <h1>{this.state.title}</h1>
-                <h1>{this.state.name}</h1>
+                <h1>{this.state.author}</h1>
                 <h1>{this.state.link}</h1>
             </div>
         )
