@@ -1,18 +1,18 @@
 import {useState} from "react"
 import '../App.css';
 
-function Project({title, name, link, image, alt, description}) {
+function Project({ProjectTitle, StudentName, Link, image, alt, Description}) {
   
   const handleClick= ()=> { 
-    window.open(link, "_blank")
+    window.open(Link, "_blank")
   }
   return (
         <div className="Project" onClick ={ handleClick}>
             <img className="ProjectImage" src ={image} alt={alt}/>
-            <div className="HiddenInfo">
-                <h1>{title}</h1>
-                <h2>{name}</h2>
-                <p>{description}</p>
+            <div>
+                <h1>{ProjectTitle}</h1>
+                <h2>{StudentName}</h2>
+                <p>{Description}</p>
             </div>
 
         
