@@ -16,9 +16,10 @@ def create_app(test_config=None):
     max_col_num = sheet_obj.max_column
     max_row_num = sheet_obj.max_row
 
+    print(max_col_num)
     # col_content = {1: "Student Name", 2:"Track", 3:"Project Title", 4:"Link to Project", 5:"Description of Project", 6: "Github Link", 7: "Photo Link"}
     col_content = {}
-    for c in range(1, max_col_num):
+    for c in range(1, max_col_num+1):
         col_content[c] = sheet_obj.cell(row = 1, column = c).value
     
 
@@ -59,7 +60,7 @@ def create_app(test_config=None):
         if track not in track_info:
             track_info[track] = []
         project_info = {}
-        for c in range(1, max_col_num):
+        for c in range(1, max_col_num+1):
             column_name = col_content[c]
             project_info.update({column_name: sheet_obj.cell(row = r, column = c).value}) 
         track_info[track].append(project_info)
@@ -80,6 +81,6 @@ def create_app(test_config=None):
     #http://127.0.0.1:5000/projects/D
     @app.route('/projects/<track>')
     def endpoint_track(track):
-        return track_info[track]
+        return {track:track_info[track]}
 
     return app
