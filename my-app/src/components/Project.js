@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import "../styles/Project.css"
 
 class Project extends Component {
     constructor(props) {
@@ -25,9 +26,11 @@ class Project extends Component {
 
     render() {
         return (
-            <div>
-                <h1>{this.state.title}</h1>
-                <h1>{this.state.author}</h1>
+            <div className="project">
+                <img src={this.state.image} alt={this.state.title}></img>
+                <h4>{this.state.title}</h4>
+                <p>Creators: {this.state.author}</p>
+                <p>Description: {this.state.description}</p>
                 <h1>{this.state.link}</h1>
             </div>
         )
