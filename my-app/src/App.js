@@ -11,10 +11,7 @@ function App() {
         !galleryOpen ?
         <div className ="Home">
           <img className="Ticket" src = {ticket} alt="ticket"/>
-          <div className ="Home-text">
-            <h1>Home</h1>
-            <button onClick = {()=>{setGalleryOpen(true)}}>Enter</button>
-          </div>
+          <button className ="EnterButton" onClick = {()=>{setGalleryOpen(true)}}>Enter</button>
         </div>
         :
         <div className ="Gallery">

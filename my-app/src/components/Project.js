@@ -3,11 +3,13 @@ import '../App.css';
 
 function Project({title, name, link, image, alt, description}) {
   
+  const handleClick= ()=> { 
+    window.open(link, "_blank")
+  }
   return (
-    <a href={link} target="_blank" rel="noreferrer" >
-        <div className="Project">
-            <img src ={image} alt={alt}/>
-            <div>
+        <div className="Project" onClick ={ handleClick}>
+            <img className="ProjectImage" src ={image} alt={alt}/>
+            <div className="HiddenInfo">
                 <h1>{title}</h1>
                 <h2>{name}</h2>
                 <p>{description}</p>
@@ -15,7 +17,6 @@ function Project({title, name, link, image, alt, description}) {
 
         
         </div>
-    </a>
   );
 }
 

@@ -6,31 +6,69 @@ body {
 .Ticket {
   width: 50%;
   /* this takes it out of position hirearchy */
-  position: absolute;
-  /* places image behind */
-  z-index: -1;
-  right: 25%;
-  top: 20%;
 }
 
-.Home-text {
+.Home {
   color: white;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
   position: absolute;
-  top: 20%;
-  right: 50%;
-
+  top: 0;
+  left:0;
+  justify-content: center;
+  flex-direction: column
 } 
+
+.EnterButton {
+  background-color: #8A2424;
+  margin-top: 50px;
+  border: 0;
+  outline: none;
+  height: 100px;
+  width: 200px;
+  font-size: 55px
+}
 
 .Gallery {
   background-color: black;
-  display: flex; 
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left:0; 
 }
 
 .Gallery-title {
   color: gray;
 }
 
+.GalleryComponent {
+  height: 100%;
+  width: 100%
+}
 
+ .Carousel {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 10%
+}
+
+.ProjectImage {
+  height: 100%;
+  object-fit: cover;
+  border: 3px solid yellow
+}
+.Project {
+  width: 33%;
+  height: 28%;
+}
+
+.HiddenInfo {
+  display: none;
+}
 
 .App-logo {
   height: 40vmin;
