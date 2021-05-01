@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import Project from '../components/Project';
 import Banner from '../components/Banner'
@@ -6,10 +7,11 @@ import "../styles/Gallery.css";
 class Gallery extends Component {
     constructor(props) {
         super(props)
-        /* TODO: See "Rendering Dynamic Data" at https://www.pluralsight.com/guides/how-to-implement-a-component-%22loop%22-with-react
 
-        Fetch the list from the backend and set the projects list.
-        */
+        axios.get('https://reqres.in/api/users?page=2')
+            .then(res => {
+                console.log(res.data.data);
+            });
         this.state = {
             projects: [
                 { title: 'The Gallery', author: 'The Curators' },
