@@ -27,10 +27,9 @@ class Project extends Component {
     render() {
         return (
             <div className="project">
-                <img src={this.state.image} alt={this.state.title}></img>
+                <img src='./favicon.ico' alt={this.state.title}></img>
                 <h4>{this.state.title}</h4>
                 <p>Creators: {this.state.author}</p>
-                <p>Description: {this.state.description}</p>
                 <h1>{this.state.link}</h1>
             </div>
         )

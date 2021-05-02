@@ -33,22 +33,23 @@ class Gallery extends Component {
     render() {
         let projectList = []
         this.state.projects.forEach(project => {
-            projectList.push(<li class="flex-item">
-                <a href={project.link}>
-                    <Project
-                        title={project.title}
-                        author={project.author}
-                        image={project.image}
-                    >
-                    </Project></a></li>)
+            projectList.push(
+                <li class="flex-item">
+                    <a href={project.link}>
+                        <Project
+                            title={project.title}
+                            author={project.author}
+                            image={project.image}
+                        ></Project>
+                    </a>
+                </li>)
         })
 
         return (
-            <div className="root">
+            <div className="gallery">
                 <Banner
-                    text="The Knowledge House"
+                    text="THE KNOWLEDGE HOUSE"
                 />
-                <h1> Gallery </h1>
                 <ul class="flex-container">
                     {projectList}
                 </ul>

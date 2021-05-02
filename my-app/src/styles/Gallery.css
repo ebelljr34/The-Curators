@@ -1,3 +1,8 @@
+.gallery {
+    background-color: black;
+    color: silver;
+}
+
 /* See the Examples section of https://css-tricks.com/snippets/css/a-guide-to-flexbox/ 
 */
 
@@ -6,12 +11,12 @@
     flex-flow: row wrap;
     justify-content: space-around;
     padding: 10px;
-    margin: 5px;
+    margin-top: 80px;
+    align-items: left;
     list-style: none;
 }
 
 .flex-item {
     padding: 10px;
     margin: 10px;
-    background-color: yellow;
 }

@@ -6,7 +6,12 @@ a:link {
     text-decoration: none;
 }
 
+.project {
+    max-width: 250px;
+    max-height: 180px;
+    color: silver;
+}
+
 .img {
-    width: 10px;
-    height: 4000px;
+    object-fit: contain;
 }
